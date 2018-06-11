@@ -1,35 +1,24 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
-    </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
-  </div>
+  <ul class="userlist">
+    <li class="useritem" v-for="item in userList" :key="item.id">
+      name: {{item.name}} <br>
+      phone: {{item.phone}}
+    </li>
+  </ul>
 </template>
 
 <script>
 import card from '@/components/card'
+import { ab2hex } from '@/utils'
 
 export default {
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      userList: [
+        {id: 1, name: 'caiyou', phone: '13347719847'},
+        {id: 2, name: 'xiaoming', phone: '18911235259'},
+        {id: 3, name: 'xiaohong', phone: '13072558338'},
+      ]
     }
   },
 
@@ -49,6 +38,7 @@ export default {
           wx.getUserInfo({
             success: (res) => {
               this.userInfo = res.userInfo
+              console.log(this.userInfo)
             }
           })
         }
@@ -56,50 +46,42 @@ export default {
     },
     clickHandle (msg, ev) {
       console.log('clickHandle:', msg, ev)
+    },
+    getLocalUsers () {
+      console.log('get local users')
+      wx.openBluetoothAdapter({
+        success: function (res) {
+          wx.startBluetoothDevicesDiscovery({
+            success: function (res) {
+              console.log(res)
+            }
+          })
+        }
+      })
+      wx.getBluetoothDevices({
+        success: function(res){
+          // success
+          //{devices: Array[11], errMsg: "getBluetoothDevices:ok"}
+          console.log("getBluetoothDevices")
+          console.log(res)
+          this.list = res.devices
+        }
+      })
     }
   },
 
   created () {
+    console.log('created')
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
-  }
+    this.getLocalUsers()
+  },
 }
 </script>
 
 <style scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
+.userlist li {
+  background-color: #ccc;
+  border-bottom: 1px solid #666;
 }
 </style>

@@ -3,6 +3,16 @@ function formatNumber (n) {
   return str[1] ? str : `0${str}`
 }
 
+function ab2hex(buffer) {
+  var hexArr = Array.prototype.map.call(
+    new Uint8Array(buffer),
+    function(bit) {
+      return ('00' + bit.toString(16)).slice(-2)
+    }
+  )
+  return hexArr.join('');
+}
+
 export function formatTime (date) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -20,5 +30,6 @@ export function formatTime (date) {
 
 export default {
   formatNumber,
-  formatTime
+  formatTime,
+  ab2hex
 }
