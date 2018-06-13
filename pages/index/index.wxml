@@ -1,0 +1,3 @@
+<input type="text" value="{{location.lat}}"/>
+<input type="text" value="{{location.lon}}"/>
+<button bindtap="openMap">打开位置</button>
