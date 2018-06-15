@@ -1,11 +1,25 @@
 {
   "pages":[
-    "pages/index/index"
+    "pages/index/index",
+    "pages/radix/radix",
+    "pages/scan/scan"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "我的"
+    }, {
+      "pagePath": "pages/radix/radix",
+      "text": "雷达"
+    }, {
+      "pagePath": "pages/scan/scan",
+      "text": "扫描"
+    }]
   }
 }

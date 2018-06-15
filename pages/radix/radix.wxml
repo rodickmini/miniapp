@@ -1,0 +1,19 @@
+<view class="page">
+  <button class="weui-btn search-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoCb">开始搜寻</button>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">附近的名片</view>
+    <view class="weui-panel__bd">
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{memberList}}" wx:for-item="member">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{member.avatarUrl}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{member.nickName}} <text class="gender">{{member.gender}}</text></view>
+          <view class="weui-media-box__desc">{{member.city}}, {{member.province}}, {{member.country}}</view>
+        </view>
+      </navigator>
+      <view class="empty" wx:if="{{ !memberList || memberList.length === 0}}">搜寻一下试试^_^</view>
+    </view>
+  </view>
+</view>
+
