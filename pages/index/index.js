@@ -1,15 +1,29 @@
+const memberService = require('../../service/member')
+
 Page({
-  onLoad: function() {
+  onLoad: function() { },
+  userInfoCb: function(res) {
+    const userinfo = res.detail.userInfo
     let self = this
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
-        console.log('success')
-        console.log(`lat: ${res.latitude} -- lon: ${res.longitude}`)
-        self.setData({
-          location: {
-            lat: res.latitude,
-            lon: res.longitude
+        const [lat, lon] = [res.latitude, res.longitude]
+        wx.showLoading({
+          title: '搜寻中',
+        })
+        memberService.getMembers(lat, lon, userinfo).then(res => {
+          if(res.data.code === 0) {
+            wx.hideLoading()
+            wx.showToast({
+              title: '搜寻完毕！',
+              icon: 'success'
+            })
+            self.setData({
+              memberList: res.data.data.memberList
+            })
+          } else {
+            console.log(res.err)
           }
         })
       },
@@ -19,13 +33,6 @@ Page({
       complete: function (res) {
         console.log('complete')
       },
-    })
-  },
-  openMap: function() {
-    wx.openLocation({
-      latitude: this.data.location.lat,
-      longitude: this.data.location.lon,
-      scale: 28
     })
   }
 })
