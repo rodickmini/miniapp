@@ -1,4 +1,4 @@
-const domain = "http://192.168.0.30:3000"
+const domain = "http://192.168.0.3:3000"
 
 module.exports = {
   post: function (url, data, opts, cb) {

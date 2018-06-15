@@ -19,6 +19,7 @@ Page({
               title: '搜寻完毕！',
               icon: 'success'
             })
+            console.log(res.data.data.geohash)
             self.setData({
               memberList: res.data.data.memberList
             })
