@@ -1,5 +1,19 @@
+const authService = require('./service/auth')
+
 App({
   onLaunch: function () {
-    // 小程序启动之后 触发
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          console.log(res.code)
+          // 根据code获取token
+          authService.login(res.code).then(res => {
+            console.log(res)
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   }
 })
