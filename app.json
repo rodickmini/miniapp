@@ -7,19 +7,23 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "累死啦",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "tabBar": {
+    "color": "#333",
+    "selectedColor": "#ff0000",
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "我的"
+      "text": "圈子"
     }, {
       "pagePath": "pages/radix/radix",
-      "text": "雷达"
+      "iconPath": "imgs/post_selected.png",
+      "selectedIconPath": "imgs/post_selected.png"
     }, {
       "pagePath": "pages/scan/scan",
-      "text": "扫描"
+      "text": "创作"
     }]
   }
 }

@@ -1,0 +1,26 @@
+.header {
+    height: 150rpx;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.header .func {
+    width: 40rpx;
+    height: 40rpx;
+    background-color: black;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.body {
+    margin-top: 150rpx;
+}

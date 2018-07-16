@@ -1,1 +1,26 @@
-<view class="a">我的</view>
+<view class="header">
+    <view class="func"></view>标题
+</view>
+<view class="body">
+    <view class="a">我的</view>
+    <button open-type="share" type="primary">分享</button>
+    <button type="primary" bindtap="openAlbum">打开相册</button>
+    <button type="primary" bindtap="openCamera">打开相机</button>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+    <view class="a">fdsafsdafsa</view>
+</view>
